@@ -1,6 +1,7 @@
 # Simple C++ project using CMake
 
 Just an exe. No tests. No libs.
+
 But uses [Conan](https://conan.io/) to get third-party libs ([fmt](https://github.com/fmtlib/fmt) as an example.)
 And [Ninja](https://ninja-build.org/) to compile in the examples.
 
