@@ -3,7 +3,7 @@
 Just an exe. No tests. No libs.
 
 But uses [Conan](https://conan.io/) to get third-party libs ([fmt](https://github.com/fmtlib/fmt) as an example.)
-And [Ninja](https://ninja-build.org/) to compile in the examples.
+And [Ninja](https://ninja-build.org/) to compile the examples.
 
 # Compile
 
@@ -28,6 +28,7 @@ Please note that I've used Ninja to compile (-G option)
 
 ## Not using Conan
 You need to have fmt installed in your system.
+
 In Ubuntu, for example a
 `sudo apt install libfmt-dev`
 will get it.
