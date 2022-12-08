@@ -10,3 +10,7 @@ find_package(fmt CONFIG)
 add_executable(simple)
 target_sources(simple PRIVATE main.cpp)
 target_link_libraries(simple PUBLIC fmt::fmt)
+target_compile_options(simple PRIVATE
+  $<$<CXX_COMPILER_ID:MSVC>:/W4 /WX>
+  $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -Wpedantic -Werror>
+)
