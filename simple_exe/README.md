@@ -14,15 +14,13 @@ cd build
 conan install .. -s build_type=Debug --build=missing
 conan install .. -s build_type=Release --build=missing
 
-cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_MODULE_PATH=$(pwd) ..
 cmake --build .
 ./simple
 
-cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_MODULE_PATH=$(pwd) ..
 cmake --build .
 ./simple
-
-cmake --build .
 ```
 Please note that I've used Ninja to compile (-G option)
 
@@ -34,8 +32,7 @@ In Ubuntu, for example a
 will get it.
 
 ```
-TODO
+cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug
+cmake --build .
+./simple
 ```
-
-## In vscode
-TODO
