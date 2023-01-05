@@ -2,5 +2,4 @@
 fmt/9.1.0
 
 [generators]
-CMakeDeps
-CMakeToolchain
+cmake_find_package_multi
