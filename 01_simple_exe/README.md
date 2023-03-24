@@ -12,8 +12,19 @@ In the script shown, [Ninja](https://ninja-build.org/) is used to compile, but a
 
 ```
 pip install conan
-conan profile new --detect default
-conan profile update settings.compiler.libcxx=libstdc++11 default
+cat <<END > $(conan config home)/profiles/default
+[settings]
+arch=x86_64
+build_type=Release
+compiler=gcc
+compiler.cppstd=20
+compiler.libcxx=libstdc++11
+compiler.version=12
+os=Linux
+
+[conf]
+tools.cmake.cmaketoolchain:generator=Ninja
+END
 ```
 
 
@@ -22,20 +33,19 @@ conan profile update settings.compiler.libcxx=libstdc++11 default
 ## Using Conan and Ninja
 
 ```
-mkdir build
-cd build
-conan install .. --build=missing # Will get the Release version of fmt
-conan install .. -s build_type=Debug --build=missing # Will get the Debug version of fmt
-
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Debug -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_MODULE_PATH=$(pwd) ..
-cmake --build .
-./simple
-
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_PREFIX_PATH=$(pwd) -DCMAKE_MODULE_PATH=$(pwd) ..
-cmake --build .
-./simple
+conan install . --output-folder=build --build=missing
+cmake --preset conan-release
+cmake --build build
+build/simple
 ```
-Please note that I've used Ninja to compile (-G option)
+Debug version:
+```
+conan install . -s build_type=Debug --output-folder=build --build=missing
+cmake --preset conan-debug
+cmake --build build
+build/simple
+```
+
 
 
 ## Not using Conan
