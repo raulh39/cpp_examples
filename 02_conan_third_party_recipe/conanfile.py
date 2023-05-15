@@ -13,7 +13,7 @@ class asyncRecipe(ConanFile):
     # Optional metadata
     license = "Boost Software License"
     author = "Klemens Morgenstern"
-    url = "<TBD>"
+    url = "https://klemens.dev/async/"
     description = "Library that provides a set of easy to use coroutine primitives & utilities for use with Asio"
     topics = ("Asio", "Async", "Coroutines")
 
