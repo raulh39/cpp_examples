@@ -39,7 +39,7 @@ class asyncRecipe(ConanFile):
     def source(self):
         git = Git(self)
         git.clone(url="https://github.com/klemens-morgenstern/async.git", target=".")
-        #git.checkout("90f58290dbc7216a5a53000ce1dc104c0a92c442")
+        git.checkout("90f58290dbc7216a5a53000ce1dc104c0a92c442")
         patch_file=os.path.join(self.export_sources_folder, "patches/fix_install_includes.patch")
         git.run(f"apply {patch_file}")
 
