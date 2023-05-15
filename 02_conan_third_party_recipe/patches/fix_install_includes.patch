@@ -1,0 +1,20 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index c7dc511..47505e8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -69,6 +69,7 @@ endif()
+ 
+ add_library(boost_async src/src.cpp)
+ target_include_directories(boost_async PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")
++target_sources(boost_async PUBLIC FILE_SET HEADERS BASE_DIRS ${PROJECT_SOURCE_DIR}/include FILES include/boost)
+ target_link_libraries(boost_async PUBLIC
+         Boost::container Boost::system
+         Threads::Threads)
+@@ -86,6 +87,7 @@ if(BOOST_ASYNC_INSTALL AND NOT BOOST_SUPERPROJECT_VERSION)
+             RUNTIME DESTINATION "${CMAKE_INSTALL_BINDIR}"
+             LIBRARY DESTINATION "${CMAKE_INSTALL_LIBDIR}"
+             ARCHIVE DESTINATION "${CMAKE_INSTALL_LIBDIR}"
++            FILE_SET HEADERS
+             )
+ endif()
+ 
