@@ -1,8 +1,0 @@
-{
-  "cmake.buildDirectory": "${workspaceFolder}/build",
-  "cmake.configureArgs": [],
-  "cmake.configureSettings": {
-    "CMAKE_PREFIX_PATH": "${workspaceFolder}/build",
-    "CMAKE_MODULE_PATH": "${workspaceFolder}/build"
-  }
-}

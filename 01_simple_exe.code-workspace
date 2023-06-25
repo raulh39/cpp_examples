@@ -1,0 +1,49 @@
+{
+  "folders": [
+    {
+      "path": "01_simple_exe"
+    }
+  ],
+  "settings": {
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureArgs": [],
+    "cmake.configureSettings": {
+      "CMAKE_PREFIX_PATH": "${workspaceFolder}/build",
+      "CMAKE_MODULE_PATH": "${workspaceFolder}/build"
+    }
+  },
+  "tasks": {
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "create build directory",
+        "type": "shell",
+        "linux": {
+          "command": "mkdir -p ${workspaceFolder}/build"
+        },
+        "hide": true
+      },
+      {
+        "label": "Conan: install",
+        "type": "shell",
+        "options": {
+          "cwd": "${workspaceFolder}/build"
+        },
+        "command": "conan install .. -s build_type=Debug --build=missing && conan install .. -s build_type=Release --build=missing",
+        "problemMatcher": [],
+        "dependsOn": [
+          "create build directory"
+        ]
+      },
+      {
+        "label": "CMake: configure",
+        "type": "cmake",
+        "command": "configure",
+        "problemMatcher": [],
+        "dependsOn": [
+          "Conan: install"
+        ]
+      }
+    ]
+  }
+}
