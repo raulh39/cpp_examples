@@ -27,9 +27,9 @@
         "label": "Conan: install",
         "type": "shell",
         "options": {
-          "cwd": "${workspaceFolder}/build"
+          "cwd": "${workspaceFolder}"
         },
-        "command": "conan install .. -s build_type=Debug --build=missing && conan install .. -s build_type=Release --build=missing",
+        "command": "conan install . --output-folder=build -s build_type=Debug --build=missing && conan install . --output-folder=build -s build_type=Release --build=missing",
         "problemMatcher": [],
         "dependsOn": [
           "Create build directory"
