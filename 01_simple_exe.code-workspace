@@ -16,7 +16,7 @@
     "version": "2.0.0",
     "tasks": [
       {
-        "label": "create build directory",
+        "label": "Create build directory",
         "type": "shell",
         "linux": {
           "command": "mkdir -p ${workspaceFolder}/build"
@@ -32,7 +32,7 @@
         "command": "conan install .. -s build_type=Debug --build=missing && conan install .. -s build_type=Release --build=missing",
         "problemMatcher": [],
         "dependsOn": [
-          "create build directory"
+          "Create build directory"
         ]
       },
       {
